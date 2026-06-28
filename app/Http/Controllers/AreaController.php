@@ -7,30 +7,23 @@ use App\Models\Area;
 
 class AreaController extends Controller
 {
-    public function index()
-    {
-        return Area::with('courses','teachers')->get();
-    }
+   
+   public function create(){
 
-    public function store(Request $request)
-    {
-        return Area::create($request->all());
-    }
+    return view('area.create');
+}
 
-    public function show($id)
-    {
-        return Area::with('courses','teachers')->find($id);
-    }
+  public function store(Request $request){
 
-    public function update(Request $request, $id)
-    {
-        $area = Area::find($id);
-        $area->update($request->all());
-        return $area;
-    }
+    $area = new Area();
 
-    public function destroy($id)
-    {
-        return Area::destroy($id);
-    }
+    $area->name = $request->name;
+
+    $area->save();
+
+    return $area;
+}
+
+
+   
 }

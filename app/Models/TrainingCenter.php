@@ -9,6 +9,11 @@ class TrainingCenter extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+         'name', 
+         'location'
+    ];
+
     public function areas(){
         return $this->hasMany('App\Models\Area');
     }

@@ -7,30 +7,25 @@ use App\Models\TrainingCenter;
 
 class TrainingCenterController extends Controller
 {
-    public function index()
-    {
-      return TrainingCenter::with('courses','teachers')->get();
-    }
 
-    public function store(Request $request)
-    {
-        return TrainingCenter::create($request->all());
-    }
+  public function create(){
 
-    public function show($id)
-    {
-        return TrainingCenter::with('courses','teachers')->find($id);
-    }
+    return view('training_center.create');
+}
 
-    public function update(Request $request, $id)
-    {
-        $trainingCenter = TrainingCenter::find($id);
-        $trainingCenter->update($request->all());
-        return $trainingCenter;
-    }
+   public function store(Request $request){
 
-    public function destroy($id)
-    {
-        return TrainingCenter::destroy($id);
-    }
+    $training_center = new TrainingCenter();
+
+    $training_center->name = $request->name;
+
+    $training_center->location = $request->location;
+
+    $training_center->save();
+
+    return $training_center;
+}
+
+
+  
 }

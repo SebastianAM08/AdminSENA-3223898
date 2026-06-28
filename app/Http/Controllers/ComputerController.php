@@ -7,30 +7,24 @@ use App\Models\Computer;
 
 class ComputerController extends Controller
 {
-    public function index()
-    {
-        return Computer::with('apprentices')->get();
-    }
+   
+   public function create(){ 
 
-    public function store(Request $request)
-    {
-        return Computer::create($request->all());
-    }
+    return view('computer.create');
+}
 
-    public function show($id)
-    {
-        return Computer::with('apprentices')->find($id);
-    }
+   public function store(Request $request){ 
 
-    public function update(Request $request, $id)
-    {
-        $computer = Computer::find($id);
-        $computer->update($request->all());
-        return $computer;
-    }
+    $computer = new Computer();
 
-    public function destroy($id)
-    {
-        return Computer::destroy($id);
-    }
+    $computer->number = $request->number;
+
+    $computer->brand = $request->brand;
+
+    $computer->save();
+
+    return $computer;
+}
+
+
 }

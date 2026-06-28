@@ -4,34 +4,25 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Apprentice;
+use App\Models\Course;
+use App\Models\Computer;
 
 class ApprenticeController extends Controller
 {
-    // Consulta con relaciones
-    public function index()
-    {
-        return Apprentice::with('course','computer')->get();
-    }
+  
+public function create(){
+    $courses = Course::all();
 
-    public function store(Request $request)
-    {
-        return Apprentice::create($request->all());
-    }
+    $computers = Computer::all();
 
-    public function show($id)
-    {
-        return Apprentice::with('course','computer')->find($id);
-    }
+    return view('apprentice.create',compact('courses', 'computers' ));
+}
 
-    public function update(Request $request, $id)
-    {
-        $apprentice = Apprentice::find($id);
-        $apprentice->update($request->all());
-        return $apprentice;
-    }
+public function store(Request $request){
+    $apprentice = Apprentice::create( $request->all());
 
-    public function destroy($id)
-    {
-        return Apprentice::destroy($id);
-    }
+    return $apprentice;
+}
+
+
 }
