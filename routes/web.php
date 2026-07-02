@@ -22,7 +22,7 @@ Route::get('/consultas', function () {
     return "Funciona";
 });
 
-
+ // entidades fuertes 
 
 Route::get('/consultas',[ConsultasController::class,'consultas']);
 
@@ -31,6 +31,8 @@ Route::post('area/store',[AreaController::class,'store'])->name('area.store');
 
 Route::get('training_center/create',[TrainingCenterController::class,'create']);
 Route::post('training_center/store',[TrainingCenterController::class,'store'])->name('training_center.store');
+
+// entidades dependientes
 
 Route::get('computer/create',[ComputerController::class,'create']);
 Route::post('computer/store',[ComputerController::class,'store'])->name('computer.store');

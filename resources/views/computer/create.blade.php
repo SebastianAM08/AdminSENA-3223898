@@ -1,10 +1,7 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Formulario Computador</title>
-</head>
+@extends('layouts.app')
 
-<body>
+@section('content')
+
 
     <h1>Formulario Computador</h1>
 
@@ -30,6 +27,4 @@
         <button type="submit"> Crear Computador</button>
 
     </form>
-
-</body>
-</html>
+@endsection

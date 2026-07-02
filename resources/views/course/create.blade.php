@@ -1,10 +1,7 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Formulario Curso</title>
-</head>
+@extends('layouts.app')
 
-<body>
+@section('content')
+
 
     <h1>Formulario Curso</h1>
 
@@ -68,6 +65,4 @@
         <button type="submit"> Crear Curso </button>
 
     </form>
-
-</body>
-</html>
+@endsection

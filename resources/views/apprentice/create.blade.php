@@ -1,12 +1,7 @@
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario Aprendiz</title>
-</head>
+@extends('layouts.app')
 
-<body>
+@section('content')
 
     <h1>Formulario Aprendiz</h1>
 
@@ -77,7 +72,4 @@
         <button type="submit">  Crear Aprendiz </button>
 
     </form>
-
-</body>
-</html>
-
+@endsection

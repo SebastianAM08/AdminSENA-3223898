@@ -1,13 +1,7 @@
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario Teacher</title>
-</head>
+@extends('layouts.app')
 
-<body>
-
+@section('content')
     <h1>Formulario Teacher</h1>
 
     <form action="{{ route('teacher.store') }}" method="POST" enctype="multipart/form-data">
@@ -68,7 +62,4 @@
         <button type="submit">Crear Teacher </button>
 
     </form>
-
-</body>
-</html>
-
+@endsection
