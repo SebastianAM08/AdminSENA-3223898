@@ -12,7 +12,7 @@
         <label>
             Número Curso:
             <br>
-            <input type="text" name="course_number">
+            <input type="number" name="course_number">
         </label>
         <br>
 
@@ -53,7 +53,9 @@
             @foreach($training_centers as $training_center)
 
                 <option value="{{ $training_center->id }}">
-                    {{ $training_center->name }}
+                    {{ $training_center->name
+                    
+                    }}
                 </option>
 
             @endforeach

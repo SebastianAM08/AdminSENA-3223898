@@ -12,7 +12,7 @@
         <label>
             Número:
             <br>
-            <input type="text" name="number">
+            <input type="number" name="number">
         </label>
         <br>
 

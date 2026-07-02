@@ -26,7 +26,7 @@
         <label>
             Celular:
             <br>
-            <input type="text" name="cell_number">
+            <input type="number" name="cell_number">
         </label>
         <br>
         
