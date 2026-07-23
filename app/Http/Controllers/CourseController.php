@@ -9,6 +9,13 @@ use App\Models\TrainingCenter;
 
 class CourseController extends Controller
 {
+
+ public function index(){
+      $course= Course::all();
+
+     return view('course.index',compact('course'));
+    }
+   
   
 public function create(){
     $areas = Area::all();

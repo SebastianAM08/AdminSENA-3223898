@@ -7,6 +7,12 @@ use App\Models\Area;
 
 class AreaController extends Controller
 {
+    public function index(){
+      $area= Area::all();
+
+     return view('area.index',compact('area'));
+    }
+   
    
    public function create(){
 

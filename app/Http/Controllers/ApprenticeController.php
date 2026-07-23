@@ -9,6 +9,14 @@ use App\Models\Computer;
 
 class ApprenticeController extends Controller
 {
+
+public function index(){
+      $apprentice = Apprentice::all();
+
+     return view('apprentice.index',compact('apprentice'));
+
+    }
+   
   
 public function create(){
     $courses = Course::all();

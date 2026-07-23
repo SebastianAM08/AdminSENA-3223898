@@ -7,6 +7,11 @@ use App\Models\Computer;
 
 class ComputerController extends Controller
 {
+    public function index(){
+    $computer= Computer::all();
+
+     return view('computer.index',compact('computer'));
+    }
    
    public function create(){ 
 

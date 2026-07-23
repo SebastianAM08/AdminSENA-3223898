@@ -8,6 +8,14 @@ use App\Models\TrainingCenter;
 class TrainingCenterController extends Controller
 {
 
+   public function index(){
+      $training_center= Trainingcenter::all();
+
+     return view('training_center.index',compact('training_center'));
+    }
+   
+
+
   public function create(){
 
     return view('training_center.create');
