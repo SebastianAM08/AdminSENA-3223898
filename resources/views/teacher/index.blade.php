@@ -1,41 +1,49 @@
 @extends('layouts.app')
 
 @section('content')
-  <h1>LISTAR Profesores</h1>
+    <h1>LISTAR PROFESORES</h1>
 
-    <div class ="container">
-        <table id="idProduct" class="table table-striped table-bordered" style="width:100%">
+    <div class="container">
+        <div class="mb-3">
+            <a href="{{ route('teacher.create') }}" class="btn btn-success">
+                <i class="bi bi-plus-circle"></i> Nuevo Profesor
+            </a>
+        </div>
+        <table id="idTeacher" class="table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
                     <th>Id</th>
                     <th>Nombre</th>
                     <th>Correo</th>
-                    <th>training_center_id</th>        
-                    <th>area_id</th>
+                    <th>Centro Id</th>
+                    <th>Centro</th>
+                    <th>Área Id</th>
+                    <th>Área</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                <a href="{{ route('teacher.create') }}" class="btn btn-success">
-                    <i class="bi bi-plus-circle"></i> Nuevo Profesor
-                </a>
-                @foreach ($teacher as $teacher)
+                @foreach ($teachers as $teacher)
                     <tr>
-                        <br>
                         <td>{{ $teacher->id }}</td>
                         <td>{{ $teacher->name }}</td>
-                        <td>{{ $teacher->correo}}</td>
-                        <td>{{ $teacher->area_id }}</td>
+                        <td>{{ $teacher->email }}</td>
                         <td>{{ $teacher->training_center_id }}</td>
-                        {{-- <td><a href="{{ route('product.show', $product->id) }}">Mostrar</a></td> --}}
-
-                        <br>
-
+                        <td>{{ $teacher->trainingCenter->name ?? 'N/A' }}</td>
+                        <td>{{ $teacher->area_id }}</td>
+                        <td>{{ $teacher->area->name ?? 'N/A' }}</td>
+                        <td>
+                            <a href="{{ route('teacher.show', $teacher->id) }}" class="btn btn-sm btn-primary">Mostrar</a>
+                            <a href="{{ route('teacher.edit', $teacher->id) }}" class="btn btn-sm btn-secondary">Editar</a>
+                            <form action="{{ route('teacher.destroy', $teacher->id) }}" method="POST" style="display:inline-block" onsubmit="return confirm('Eliminar profesor?')">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-sm btn-danger">Eliminar</button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
-
             </tbody>
-
         </table>
-
     </div>
 @endsection

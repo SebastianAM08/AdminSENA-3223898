@@ -8,27 +8,43 @@ use App\Models\Computer;
 class ComputerController extends Controller
 {
     public function index(){
-    $computer= Computer::all();
+    $computers = Computer::all();
 
-     return view('computer.index',compact('computer'));
+     return view('computer.index',compact('computers'));
     }
    
+   public function show($id){
+      $computer = Computer::findOrFail($id);
+
+      return view('computer.show', compact('computer'));
+   }
+
    public function create(){ 
 
     return view('computer.create');
 }
 
-   public function store(Request $request){ 
+    public function store(Request $request){ 
+     $computer = Computer::create($request->all());
 
-    $computer = new Computer();
+     return redirect()->route('computer.index')->with('success', 'Computadora creada correctamente.');
+}
 
-    $computer->number = $request->number;
+    public function edit($id){
+     $computer = Computer::findOrFail($id);
+     return view('computer.edit', compact('computer'));
+}
 
-    $computer->brand = $request->brand;
+    public function update(Request $request, $id){
+     $computer = Computer::findOrFail($id);
+     $computer->update($request->all());
+     return redirect()->route('computer.index')->with('success','Computadora actualizada.');
+}
 
-    $computer->save();
-
-    return $computer;
+    public function destroy($id){
+     $computer = Computer::findOrFail($id);
+     $computer->delete();
+     return redirect()->route('computer.index')->with('success','Computadora eliminada.');
 }
 
 

@@ -25,10 +25,19 @@ class Course extends Model
     }
 
     public function teachers(){
-    return $this->belongsToMany('App\Models\Teacher','course_teachers');
-}
+        return $this->belongsToMany('App\Models\Teacher','course_teachers');
+    }
 
     public function apprentices(){
         return $this->hasMany('App\Models\Apprentice');
+    }
+
+    protected static function booted()
+    {
+        static::deleting(function ($course) {
+            $course->apprentices()->each(function ($apprentice) {
+                $apprentice->delete();
+            });
+        });
     }
 }

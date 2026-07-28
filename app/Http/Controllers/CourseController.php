@@ -11,11 +11,16 @@ class CourseController extends Controller
 {
 
  public function index(){
-      $course= Course::all();
+      $courses = Course::all();
 
-     return view('course.index',compact('course'));
+     return view('course.index', compact('courses'));
     }
    
+  public function show($id){
+      $course = Course::findOrFail($id);
+
+      return view('course.show', compact('course'));
+   }
   
 public function create(){
     $areas = Area::all();
@@ -25,10 +30,27 @@ public function create(){
 }
 
 public function store(Request $request){
-    $course = Course::create( $request->all());
+    $course = Course::create($request->all());
 
-    return $course;
+    return redirect()->route('course.index')->with('success', 'Curso creado correctamente.');
 }
+
+ public function edit($id){
+     $course = Course::findOrFail($id);
+     return view('course.edit', compact('course'));
+ }
+
+ public function update(Request $request, $id){
+     $course = Course::findOrFail($id);
+     $course->update($request->all());
+     return redirect()->route('course.index')->with('success','Curso actualizado.');
+ }
+
+ public function destroy($id){
+     $course = Course::findOrFail($id);
+     $course->delete();
+     return redirect()->route('course.index')->with('success','Curso eliminado.');
+ }
 
    
 }

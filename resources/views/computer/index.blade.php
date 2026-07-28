@@ -1,45 +1,39 @@
 @extends('layouts.app')
 
 @section('content')
-  <h1>LISTAR PRODUCTOS</h1>
+    <h1>LISTAR COMPUTADORAS</h1>
 
-    <div class ="container">
-        <table id="idProduct" class="table table-striped table-bordered" style="width:100%">
+    <div class="container">
+        <table id="idComputer" class="table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Nombre</th>
-                    <th>Descripcion</th>
-                    <th>Cantidad</th>
-                    <th>Peso</th>
-                    <th>Tamaño</th>
-                    <th>User_id</th>
+                    <th>Número</th>
+                    <th>Marca</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                <a href="{{ route('product.create') }}" class="btn btn-success">
-                    <i class="bi bi-plus-circle"></i> Nuevo Producto
+                <a href="{{ route('computer.create') }}" class="btn btn-success">
+                    <i class="bi bi-plus-circle"></i> Nueva Computadora
                 </a>
-                @foreach ($products as $product)
+                @foreach ($computers as $computer)
                     <tr>
-                        <br>
-                        <td>{{ $product->id }}</td>
-                        <td>{{ $product->nombre }}</td>
-                        <td>{{ $product->descripcion }}</td>
-                        <td>{{ $product->cantidad }}</td>
-                        <td>{{ $product->peso }}</td>
-                        <td>{{ $product->tamano }}</td>
-                        <td>{{ $product->user_id }}</td>
-                        {{-- <td><a href="{{ route('product.show', $product->id) }}">Mostrar</a></td> --}}
-
-                        <br>
-
+                        <td>{{ $computer->id }}</td>
+                        <td>{{ $computer->number }}</td>
+                        <td>{{ $computer->brand }}</td>
+                        <td>
+                            <a href="{{ route('computer.show', $computer->id) }}" class="btn btn-sm btn-primary">Mostrar</a>
+                            <a href="{{ route('computer.edit', $computer->id) }}" class="btn btn-sm btn-secondary">Editar</a>
+                            <form action="{{ route('computer.destroy', $computer->id) }}" method="POST" style="display:inline-block" onsubmit="return confirm('Eliminar computadora?')">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-sm btn-danger">Eliminar</button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
-
             </tbody>
-
         </table>
-
     </div>
 @endsection

@@ -11,11 +11,16 @@ class TeacherController extends Controller
 {
 
   public function index(){
-      $teacher= Teacher::all();
+      $teachers = Teacher::all();
 
-    return view('teacher.index',compact('teacher'));
+    return view('teacher.index', compact('teachers'));
     }
    
+  public function show($id){
+      $teacher = Teacher::findOrFail($id);
+
+      return view('teacher.show', compact('teacher'));
+   }
 
 public function create(){
     $areas = Area::all();
@@ -28,8 +33,25 @@ public function create(){
 public function store(Request $request){
     $teacher = Teacher::create($request->all());
 
-    return $teacher;
+    return redirect()->route('teacher.index')->with('success', 'Profesor creado correctamente.');
 }
+
+ public function edit($id){
+   $teacher = Teacher::findOrFail($id);
+   return view('teacher.edit', compact('teacher'));
+ }
+
+ public function update(Request $request, $id){
+   $teacher = Teacher::findOrFail($id);
+   $teacher->update($request->all());
+   return redirect()->route('teacher.index')->with('success','Profesor actualizado.');
+ }
+
+ public function destroy($id){
+   $teacher = Teacher::findOrFail($id);
+   $teacher->delete();
+   return redirect()->route('teacher.index')->with('success','Profesor eliminado.');
+ }
 
   
 }

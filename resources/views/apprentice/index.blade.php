@@ -1,45 +1,51 @@
 @extends('layouts.app')
 
 @section('content')
-  <h1>LISTAR APRENDICES </h1>
+    <h1>LISTAR APRENDICES</h1>
 
-    <div class ="container">
-        <table id="idapprentice" class="table table-striped table-bordered" style="width:100%">
+    <div class="container">
+        <div class="mb-3">
+            <a href="{{ route('apprentice.create') }}" class="btn btn-success">
+                <i class="bi bi-plus-circle"></i> Nuevo Aprendiz
+            </a>
+        </div>
+        <table id="idApprentice" class="table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
                     <th>Id</th>
                     <th>Nombre</th>
                     <th>Correo</th>
-                    <th>numero de telefono</th>
-                    <th>course_id</th>
-                    <th>computer_id</th>
-                   
+                    <th>Teléfono</th>
+                    <th>Curso Id</th>
+                    <th>Curso</th>
+                    <th>Computadora Id</th>
+                    <th>Computadora</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                <a href="{{ route('apprentice.create') }}" class="btn btn-success">
-                    <i class="bi bi-plus-circle"></i> Nuevo aprendiz
-                </a>
-                @foreach ($apprentice as $apprentice)
+                @foreach ($apprentices as $apprentice)
                     <tr>
-                        <br>
                         <td>{{ $apprentice->id }}</td>
-                        <td>{{ $apprentice->Nombre }}</td>
-                        <td>{{ $apprentice->Correo }}</td>
-                        <td>{{ $apprentice->Celular}}</td>
-                        <td>{{ $apprentice->course_id}}</td>
+                        <td>{{ $apprentice->name }}</td>
+                        <td>{{ $apprentice->email }}</td>
+                        <td>{{ $apprentice->cell_number }}</td>
+                        <td>{{ $apprentice->course_id }}</td>
+                        <td>{{ $apprentice->course->course_number }}</td>
                         <td>{{ $apprentice->computer_id }}</td>
-                        
-                        {{-- <td><a href="{{ route('product.show', $product->id) }}">Mostrar</a></td> --}}
-
-                        <br>
-
+                        <td>{{ $apprentice->computer->number }}</td>
+                        <td>
+                            <a href="{{ route('apprentice.show', $apprentice->id) }}" class="btn btn-sm btn-primary">Mostrar</a>
+                            <a href="{{ route('apprentice.edit', $apprentice->id) }}" class="btn btn-sm btn-secondary">Editar</a>
+                            <form action="{{ route('apprentice.destroy', $apprentice->id) }}" method="POST" style="display:inline-block" onsubmit="return confirm('Eliminar aprendiz?')">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-sm btn-danger">Eliminar</button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
-
             </tbody>
-
         </table>
-
     </div>
 @endsection

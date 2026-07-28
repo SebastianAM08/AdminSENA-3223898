@@ -22,4 +22,17 @@ class Area extends Model
     public function teachers(){
         return $this->hasMany('App\Models\Teacher');
     }
+
+    protected static function booted()
+    {
+        static::deleting(function ($area) {
+            $area->courses()->each(function ($course) {
+                $course->delete();
+            });
+
+            $area->teachers()->each(function ($teacher) {
+                $teacher->delete();
+            });
+        });
+    }
 }
