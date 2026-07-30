@@ -39,7 +39,9 @@ public function store(Request $request){
 
  public function edit($id){
      $apprentice = Apprentice::findOrFail($id);
-     return view('apprentice.edit', compact('apprentice'));
+     $courses = Course::all();
+     $computers = Computer::all();
+     return view('apprentice.edit', compact('apprentice', 'courses', 'computers'));
  }
 
  public function update(Request $request, $id){

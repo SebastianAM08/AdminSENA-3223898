@@ -37,7 +37,9 @@ public function store(Request $request){
 
  public function edit($id){
      $course = Course::findOrFail($id);
-     return view('course.edit', compact('course'));
+     $areas = Area::all();
+     $training_centers = TrainingCenter::all();
+     return view('course.edit', compact('course', 'areas', 'training_centers'));
  }
 
  public function update(Request $request, $id){

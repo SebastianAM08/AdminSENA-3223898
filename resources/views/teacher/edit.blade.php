@@ -9,19 +9,31 @@
             @method('PUT')
             <div class="mb-3">
                 <label class="form-label">Nombre</label>
-                <input type="text" name="name" class="form-control" value="{{ $teacher->name }}" required>
+                <input type="text" name="name" class="form-control" value="{{ old('name', $teacher->name) }}" required>
             </div>
             <div class="mb-3">
                 <label class="form-label">Correo</label>
-                <input type="email" name="email" class="form-control" value="{{ $teacher->email }}">
+                <input type="email" name="email" class="form-control" value="{{ old('email', $teacher->email) }}">
             </div>
             <div class="mb-3">
-                <label class="form-label">Área Id</label>
-                <input type="number" name="area_id" class="form-control" value="{{ $teacher->area_id }}">
+                <label class="form-label">Área</label>
+                <select name="area_id" class="form-control">
+                    @foreach ($areas as $area)
+                        <option value="{{ $area->id }}" {{ old('area_id', $teacher->area_id) == $area->id ? 'selected' : '' }}>
+                            {{ $area->id }} - {{ $area->name }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
             <div class="mb-3">
-                <label class="form-label">Centro Id</label>
-                <input type="number" name="training_center_id" class="form-control" value="{{ $teacher->training_center_id }}">
+                <label class="form-label">Centro de Formación</label>
+                <select name="training_center_id" class="form-control">
+                    @foreach ($training_centers as $training_center)
+                        <option value="{{ $training_center->id }}" {{ old('training_center_id', $teacher->training_center_id) == $training_center->id ? 'selected' : '' }}>
+                            {{ $training_center->id }} - {{ $training_center->name }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
             <button class="btn btn-primary">Guardar</button>
             <a href="{{ route('teacher.index') }}" class="btn btn-secondary">Cancelar</a>

@@ -25,9 +25,13 @@
                         <td>{{ $training_center->name }}</td>
                         <td>{{ $training_center->location }}</td>
                         <td>
-                            <a href="{{ route('training_center.show', $training_center->id) }}" class="btn btn-sm btn-primary">Mostrar</a>
-                            <a href="{{ route('training_center.edit', $training_center->id) }}" class="btn btn-sm btn-secondary">Editar</a>
-                            <form action="{{ route('training_center.destroy', $training_center->id) }}" method="POST" style="display:inline-block" onsubmit="return confirm('Eliminar centro?')">
+                            <a href="{{ route('training_center.show', $training_center->id) }}"
+                                class="btn btn-sm btn-primary">Mostrar</a>
+                            <a href="{{ route('training_center.edit', $training_center->id) }}"
+                                class="btn btn-sm btn-secondary">Editar</a>
+                            <form action="{{ route('training_center.destroy', $training_center->id) }}" method="POST"
+                                style="display:inline-block"
+                                onsubmit="return confirm('Eliminar centro? Esto borrará {{ $training_center->courses->count() }} curso(s) y {{ $training_center->teachers->count() }} instructor(es) relacionados.')">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-sm btn-danger">Eliminar</button>
