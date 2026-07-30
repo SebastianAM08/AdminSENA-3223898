@@ -86,33 +86,14 @@
     @include('includes.navbar')
 
     <main class="container py-5 hero position-relative" style="z-index:1;">
-        <div class="row align-items-center">
-            <div class="col-lg-6">
+        <div class="row align-items-center justify-content-center text-center">
+            <div class="col-lg-8">
                 <p class="section-title mb-3">Portal administrativo</p>
                 <h1 class="display-5 fw-bold glow-accent">Admin Sena</h1>
                 <p class="lead text-white-75">Gestiona cursos, instructores, aprendices y centros de formación con una interfaz simple y moderna.</p>
-                <div class="d-flex gap-2 mt-4">
+                <div class="d-flex justify-content-center gap-2 mt-4">
                     <a href="{{ route('course.index') }}" class="btn btn-sena btn-lg">Ver cursos</a>
                     <a href="{{ route('apprentice.index') }}" class="btn btn-outline-light btn-lg">Ver aprendices</a>
-                </div>
-            </div>
-            <div class="col-lg-6 text-center">
-                <div class="card card-custom p-4 shadow-lg hero-card">
-                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80" class="img-fluid rounded mb-3" alt="Aprendices" style="border-radius:.75rem !important;">
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="mb-3 text-center">
-                                <div class="stat-number">Cursos</div>
-                                <div class="stat-label">Gestiona tu oferta académica</div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="mb-3 text-center">
-                                <div class="stat-number">Aprendices</div>
-                                <div class="stat-label">Controla inscripciones y avances</div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
