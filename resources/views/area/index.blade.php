@@ -25,7 +25,9 @@
                         <td>
                             <a href="{{ route('area.show', $area->id) }}" class="btn btn-sm btn-primary">Mostrar</a>
                             <a href="{{ route('area.edit', $area->id) }}" class="btn btn-sm btn-secondary">Editar</a>
-                            <form action="{{ route('area.destroy', $area->id) }}" method="POST" style="display:inline-block" onsubmit="return confirm('Eliminar área? Esto borrará {{ $area->courses->count() }} curso(s) y {{ $area->teachers->count() }} profesor(es) relacionados.')">
+                            <form action="{{ route('area.destroy', $area->id) }}" method="POST"
+                                style="display:inline-block"
+                                onsubmit="return confirm('Eliminar área? Esto borrará {{ $area->courses->count() }} curso(s) y {{ $area->teachers->count() }} profesor(es) relacionados.')">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-sm btn-danger">Eliminar</button>

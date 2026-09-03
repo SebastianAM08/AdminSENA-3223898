@@ -12,19 +12,21 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+            'name',
+            'email',
+            'password',
+            'role', // Added
+        ];
 
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+        // Método auxiliar para comprobar si es Admin
+        public function isAdmin(): bool
+        {
+            return $this->role === 'admin';
+        }
 
-    
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-    ];
+        // Método auxiliar para identificar al Administrador Principal
+        public function isPrimaryAdmin(): bool
+        {
+            return $this->id === 1 || $this->email === 'admin@sena.edu.co';
+        }
 }

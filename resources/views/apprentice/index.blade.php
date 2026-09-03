@@ -33,7 +33,7 @@
                         <td>{{ $apprentice->course_id }}</td>
                         <td>{{ $apprentice->course->course_number }}</td>
                         <td>{{ $apprentice->computer_id }}</td>
-                        <td>{{ $apprentice->computer->number }}</td>
+                        <td>{{ $apprentice->computer->brand }}</td>
                         <td>
                             <a href="{{ route('apprentice.show', $apprentice->id) }}" class="btn btn-sm btn-primary">Mostrar</a>
                             <a href="{{ route('apprentice.edit', $apprentice->id) }}" class="btn btn-sm btn-secondary">Editar</a>
