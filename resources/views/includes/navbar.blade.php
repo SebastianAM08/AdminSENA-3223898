@@ -2,7 +2,7 @@
     <div class="container">
         <!-- Brand -->
         <a class="navbar-brand d-flex align-items-center gap-2" href="{{ url('/') }}">
-            <img src="{{ asset('img/logo-sena.png') }}" alt="Logo SENA" width="38" height="38" class="d-inline-block align-text-top bg-white p-1 rounded-circle object-fit-contain">
+            <img src="{{ asset('storage/img/logo-sena.png') }}" alt="Logo SENA" width="38" height="38" class="d-inline-block align-text-top bg-white p-1 rounded-circle object-fit-contain">
             <span class="fw-bold">Admin Sena</span>
         </a>
 

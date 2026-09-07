@@ -7,7 +7,7 @@
                 <!-- Branding Institucional SENA -->
                 <div class="d-flex align-items-center mb-3">
                     <!-- Si tienes una imagen del logo SENA, usa esta línea: -->
-                    <img src="{{ asset('img/logo-sena.png') }}" alt="Logo SENA" width="38" height="38" class="d-inline-block align-text-top bg-white p-1 rounded-circle object-fit-contain">
+                    <img src="{{ asset('storage/img/logo-sena.png') }}" alt="Logo SENA" width="38" height="38" class="d-inline-block align-text-top bg-white p-1 rounded-circle object-fit-contain">
                     
                     <!-- O en texto plano: -->
                     <span class="fs-2 fw-bold tracking-tight">SENA</span>
